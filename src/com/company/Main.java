@@ -1,23 +1,11 @@
 package com.company;
 
-import java.io.IOException;
-import java.io.FileReader;
+import java.util.Arrays;
 
 public class Main {
-
     public static void main(String[] args) {
-        try(FileReader reader = new FileReader("param.txt"))
-        {
-            // читаем посимвольно
-            int c;
-            while((c=reader.read())!=-1){
-
-                System.out.print((char)c);
-            }
-        }
-        catch(IOException ex){
-
-            System.out.println(ex.getMessage());
-        }
+        Algorytm mas = new Algorytm();
+        mas.array = new int[] {3, 1, 4, 7, 3, 9, 2, 6, 4};
+        System.out.println(Arrays.toString(mas.sort_array()));
     }
 }
