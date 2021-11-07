@@ -3,7 +3,6 @@ package com.company;
 public class Algorytm {
     int number_alg;
     int[] array;
-    //String error = "";
 
     int[] sort_array() {
         switch (number_alg) {
@@ -24,19 +23,19 @@ public class Algorytm {
                 break;
 
             case (2):
-                for (int left = 0; left < array.length; left++) {
-                    int minInd = left;
-                    for (int i = left; i < array.length; i++) {
-                        if (array[i] < array[minInd]) {
-                            minInd = i;
+                for (int min = 0; min < array.length-1; min++) {
+                    int least = min;
+                    for (int j = min + 1; j < array.length; j++) {
+                        if (array[j] < array[least]) {
+                            least = j;
                         }
                     }
-                    //swap(array, left, minInd);
+                    int tmp = array[min];
+                    array[min] = array[least];
+                    array[least] = tmp;
                 }
 
             default:
-                //error = "Алгоритм с таким номером не существует.";
-                //System.out.println(error);
                 break;
         }
         return array;
