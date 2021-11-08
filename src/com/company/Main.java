@@ -1,7 +1,9 @@
 package com.company;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,11 +16,32 @@ public class Main {
             System.out.println("Введите длину массива: ");
             int n = sc.nextInt();
             mas.array = new int[n];
-            System.out.println("Введите сам массив (числа через пробел): ");
-            for (int i = 0; i < n; i++) {
-                mas.array[i] = sc.nextInt();
+            int[] arr = new int[n];
+            System.out.println("Вы хотите ввести массив самостоятельно? да/нет : 1/0 (если нет, то он сгенерируется рандомом от -100 до 100): ");
+            int v = sc.nextInt();
+            if (v==1) {
+                System.out.println("Введите сам массив (числа через пробел): ");
+                for (int i = 0; i < n; i++) {
+                    mas.array[i] = sc.nextInt();
+                }
             }
-            System.out.println(Arrays.toString(mas.sort_array()));
+            else if (v==0) {
+                for (int i = 0; i < n; i++) {
+                    Random r = new Random();
+                    int rr=r.nextInt(200)-100;
+                    mas.array[i] = rr;
+                    arr[i] = mas.array[i];
+                }
+                System.out.println("Вот сгенерированный массив: " + Arrays.toString(arr));
+            }
+            else System.out.println("Перечитайте предыдущую строку.");
+            if (v==1 || v==0) {
+                long lStartTime = System.nanoTime();
+                arr=mas.sort_array();
+                long lEndTime = System.nanoTime();
+                System.out.println("Отсортированный массив: " + Arrays.toString(arr));
+                System.out.println("Наносекунд на сортировку затрачено: " + (lEndTime - lStartTime));
+            }
         }
     }
 }
