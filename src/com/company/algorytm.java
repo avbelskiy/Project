@@ -3,7 +3,7 @@ package com.company;
 public class Algorytm {
     int number_alg;
     int[] array;
-
+    
     int[] sort_array() {
         switch (number_alg) {
             case (1):
