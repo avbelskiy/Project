@@ -1,6 +1,6 @@
 package com.company;
 
-public class Algorytm {
+public class Algorithm {
     int number_alg;
     int[] array;
     

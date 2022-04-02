@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Algorytm mas = new Algorytm();
+        Algorithm mas = new Algorithm();
         Scanner sc = new Scanner(System.in);
         System.out.println("Введите номер алгоритма: ");
         mas.number_alg = sc.nextInt();
