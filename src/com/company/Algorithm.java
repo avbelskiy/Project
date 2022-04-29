@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class Algorithm {
 
     int number_alg;
@@ -41,8 +43,48 @@ public class Algorithm {
             quickSort(array, i, high);
     }
 
+    public static int[] bucketSort(int[] arr) {
+        int gg, j;
+        int[] bucket = new int[arr.length+1];
+        Arrays.fill(bucket, 0);
 
-        int[] sort_array() {
+        for (gg = 0; gg < arr.length; gg++) {
+            bucket[arr[gg]]++;
+        }
+
+        int k=0;
+        for (gg = 0; gg < bucket.length; gg++) {
+            for (j = 0; j<bucket[gg]; j++) {
+                arr[k++] = gg;
+            }
+        }
+        return arr;
+    }
+
+    public static void sort( int[] input,int n)
+    {
+        int min=0,max=0;
+        for (int i = 1; i < n; i++)
+        {
+            if (input[i] > max)
+                max = input[i];
+            if (input[i] < min)
+                min = input[i];
+        }
+        int range = max - min + 1;
+        int[] count = new int[range];
+        for (int i = 0; i < n; i++)
+            count[input[i] - min]++;
+        for (int i = 1; i < range; i++)
+
+            count[i] += count[i - 1];
+        int j = 0;
+        for (int i = 0; i < range; i++)
+            while (j < count[i])
+                input[j++] = i + min;
+    }
+
+    int[] sort_array() {
         switch (number_alg) {
             case (1):   //метод пузырька
                 boolean isSorted = false;
@@ -125,6 +167,42 @@ public class Algorithm {
 
             case (6):   //метод быстрой сортировки
                 quickSort(array, 0, array.length - 1);
+                break;
+
+            case (7):   //метод перемешивания
+                boolean isSwapped = true;
+                int start = 0;
+                int end = array.length;
+
+                while (isSwapped) {
+                    isSwapped = false;
+                    for (int i = start; i < end - 1; ++i) {
+                        if (array[i] > array[i + 1]) {
+                            int temp = array[i];
+                            array[i] = array[i + 1];
+                            array[i + 1] = temp;
+                            isSwapped = true;
+                        }
+                    }
+                    if (isSwapped)
+                        break;
+                    isSwapped = false;
+                    end = end - 1;
+
+                    for (int i = end - 1; i >= start; i--) {
+                        if (array[i] > array[i + 1]) {
+                            int temp = array[i];
+                            array[i] = array[i + 1];
+                            array[i + 1] = temp;
+                            isSwapped = true;
+                        }
+                    }
+                    start = start + 1;
+                }
+                break;
+
+            case (8):   //метод подсчета (не работает)
+                sort(array, array.length);
                 break;
 
             default:
