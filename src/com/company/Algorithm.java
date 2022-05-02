@@ -157,44 +157,50 @@ public class Algorithm {
     }
 
     public static int[] bucketSort(int[] arr) {
-        int gg, j;
+        int i, j;
         int[] bucket = new int[arr.length+1];
         Arrays.fill(bucket, 0);
 
-        for (gg = 0; gg < arr.length; gg++) {
-            bucket[arr[gg]]++;
+        for (i = 0; i < arr.length; i++) {
+            bucket[arr[i]]++;
         }
 
         int k=0;
-        for (gg = 0; gg < bucket.length; gg++) {
-            for (j = 0; j<bucket[gg]; j++) {
-                arr[k++] = gg;
+        for (i = 0; i < bucket.length; i++) {
+            for (j = 0; j<bucket[i]; j++) {
+                arr[k++] = i;
             }
         }
         return arr;
     }
 
-    public static void count_sort( int[] input,int n)
-    {
-        int min=0,max=0;
-        for (int i = 1; i < n; i++)
+    public static void count_sort( int[] array) {
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for (int element : array)
         {
-            if (input[i] > max)
-                max = input[i];
-            if (input[i] < min)
-                min = input[i];
+            if (element < min)
+            {
+                min = element;
+            }
+            if (element > max)
+            {
+                max = element;
+            }
         }
-        int range = max - min + 1;
-        int[] count = new int[range];
-        for (int i = 0; i < n; i++)
-            count[input[i] - min]++;
-        for (int i = 1; i < range; i++)
-
-            count[i] += count[i - 1];
-        int j = 0;
-        for (int i = 0; i < range; i++)
-            while (j < count[i])
-                input[j++] = i + min;
+        int[] buckets = new int[max - min + 1];
+        for (int element : array)
+        {
+            buckets[element - min]++;
+        }
+        int arrayIndex = 0;
+        for (int i = 0; i < buckets.length; i++)
+        {
+            for (int j = buckets[i]; j > 0; j--)
+            {
+                array[arrayIndex++] = i + min;
+            }
+        }
     }
 
     int[] sort_array() {
@@ -216,7 +222,7 @@ public class Algorithm {
             case (8) ->   //метод блоков (не работает)
                     bucketSort(array);
             case (9) ->   //метод подсчета (не работает)
-                    count_sort(array, array.length);
+                    count_sort(array);
             default -> {
             }
         }

@@ -10,7 +10,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Введите номер алгоритма: ");
         mas.number_alg = sc.nextInt();
-        if (mas.number_alg < 1 || mas.number_alg > 8) { System.out.println("Алгоритм с таким номером не существует.");}
+        if (mas.number_alg < 1 || mas.number_alg > 9) { System.out.println("Алгоритм с таким номером не существует.");}
         else {
             System.out.println("Введите длину массива: ");
             int n = sc.nextInt();
