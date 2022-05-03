@@ -221,7 +221,7 @@ public class Algorithm {
                     swap_sort(array);
             case (8) ->   //метод блоков (не работает)
                     bucketSort(array);
-            case (9) ->   //метод подсчета (не работает)
+            case (9) ->   //метод подсчета
                     count_sort(array);
             default -> {
             }
